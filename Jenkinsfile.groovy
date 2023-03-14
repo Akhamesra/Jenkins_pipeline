@@ -19,7 +19,7 @@ pipeline{
                 sshagent(['AWS_Key']) {
                     sh script:'''
                             
-                            ssh -o StrictHostKeyChecking=no ec2-user@44.201.7.203 '
+                            ssh -o StrictHostKeyChecking=no ec2-user@13.232.72.1 '
                                 sudo su
                                 sudo yum update -y
                                 sudo yum install httpd -y
