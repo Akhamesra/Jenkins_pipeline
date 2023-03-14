@@ -17,15 +17,15 @@ pipeline{
         stage('EC2 Instance'){
             steps{
                 sshagent(['AWS_Key']) {
-                    sh '''
+                    sh script:'''
                             ssh ec2-user@13.232.72.1'
-                                #!/bin/bash
-                                yum update -y
-                                yum install httpd -y
-                                service httpd start
-                                chkconfig httpd on
-                                cd /var/www/html
-                                chmod 777 /var/www/html
+                                sudo su
+                                sudo yum update -y
+                                sudo yum install httpd -y
+                                sudo service httpd start
+                                sudo chkconfig httpd on
+                                sudo cd /var/www/html
+                                sudo chmod 777 /var/www/html
                             '
                             scp jenkins.zip ec2-user@13.232.72.1:/var/www/html
 
