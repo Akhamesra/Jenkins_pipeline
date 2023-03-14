@@ -15,24 +15,26 @@ pipeline{
         }
 
         stage('EC2 Instance'){
-            sshagent(['AWS_Key']) {
-                sh '''
-                        ssh ec2-user@13.232.72.1'
-                            #!/bin/bash
-                            yum update -y
-                            yum install httpd -y
-                            service httpd start
-                            chkconfig httpd on
-                            cd /var/www/html
-                            chmod 777 /var/www/html
-                        '
-                        scp jenkins.zip ec2-user@13.232.72.1:/var/www/html
+            steps{
+                sshagent(['AWS_Key']) {
+                    sh '''
+                            ssh ec2-user@13.232.72.1'
+                                #!/bin/bash
+                                yum update -y
+                                yum install httpd -y
+                                service httpd start
+                                chkconfig httpd on
+                                cd /var/www/html
+                                chmod 777 /var/www/html
+                            '
+                            scp jenkins.zip ec2-user@13.232.72.1:/var/www/html
 
-                        ssh ec2-user@13.232.72.1'
-                            cd /var/www/html
-                            unzip jenkins.zip -d .
-                        '
-                        '''
+                            ssh ec2-user@13.232.72.1'
+                                cd /var/www/html
+                                unzip jenkins.zip -d .
+                            '
+                            '''
+                }
             }
         }
     }
