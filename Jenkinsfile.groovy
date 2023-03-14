@@ -10,7 +10,8 @@ pipeline{
 
         stage('Create a package'){
             steps{
-                sh 'zip -r jenkins.zip template/*'
+                sh 'cd template'
+                sh 'zip -r ../jenkins.zip *'
             }
         }
 
