@@ -32,7 +32,7 @@ pipeline{
 
                             ssh ec2-user@13.232.72.1 '
                                 cd /var/www/html
-                                unzip jenkins.zip -d .
+                                unzip -o jenkins.zip -d .
                             '
                             '''
                 }
