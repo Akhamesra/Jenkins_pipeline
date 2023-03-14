@@ -30,7 +30,7 @@ pipeline{
                             '
                             scp jenkins.zip ec2-user@13.232.72.1:/var/www/html
 
-                            ssh ec2-user@13.232.72.1'
+                            ssh ec2-user@13.232.72.1 '
                                 cd /var/www/html
                                 unzip jenkins.zip -d .
                             '
